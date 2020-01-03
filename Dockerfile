@@ -81,6 +81,16 @@ ENV JENKINS_HOME=/var/jenkins_home
 ENV JENKINS_VERSION=2.211
 ENV JENKINS_SLAVE_AGENT_PORT=50000
 
+# Install Allure commandline
+RUN \
+wget http://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.13.1/allure-commandline-2.13.1.zip && \
+unzip allure-commandline-2.13.1.zip && \
+mv allure-2.13.1 /usr/bin/allure-2.13.1 && \
+rm allure-commandline-2.13.1.zip
+
+ENV ALLURE_COMMAND_LINE=/usr/bin/allure-2.13.1
+
+
 # Define volume directory
 VOLUME ["/var/jenkins_home"] 
 
@@ -89,5 +99,3 @@ WORKDIR /var/jenkins_home
 
 EXPOSE 8080 50000 
 USER jenkins
-
-
