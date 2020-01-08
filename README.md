@@ -6,9 +6,11 @@
 
 2. Далее следует добавить системного пользователя Jenkins на сервер. Этот пользователь будет управлять сервисом Jenkins
 
-```sudo groupadd --system jenkins
+```
+   sudo groupadd --system jenkins
    sudo useradd -s /sbin/nologin --system -g jenkins jenkins
-   sudo usermod -aG docker jenkins```
+   sudo usermod -aG docker jenkins
+```
 
 3. Создаем рабочую папку для jenkins
 
