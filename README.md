@@ -2,7 +2,7 @@
 
 1. Cоздаем имедж на сервере с помощью докер файла
 
- - docker build -t nedved198725/app_jenkins:latest https://github.com/Sergiy1987/jenkins_dokerfile.git#master
+```docker build -t nedved198725/app_jenkins:latest https://github.com/Sergiy1987/jenkins_dokerfile.git#master```
 
 2. Далее следует добавить системного пользователя Jenkins на сервер. Этот пользователь будет управлять сервисом Jenkins
 
