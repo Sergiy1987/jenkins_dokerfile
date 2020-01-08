@@ -17,15 +17,13 @@
 
 4. Запуск имеджа
 
-docker run --rm -a STDIN -a STDOUT -a STDERR \
+ - docker run --rm -a STDIN -a STDOUT -a STDERR \
           --hostname http://35.234.149.51 \
           --name jenkins-server \
           --publish 8080:8080 \
           --publish 50000:50000 \
           --volume /var/jenkins_home:/var/jenkins_home \
           nedved198725/app_jenkins:latest
-  --hostname - это ip адресс хоста на котором запускается дженкинс
-  --name        - имя контейнера
 
 5. Активация Jenkins
 
