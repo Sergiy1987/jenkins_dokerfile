@@ -1,12 +1,19 @@
 # Pull base image
 FROM jenkins:latest
+LABEL maintainer="Sergiy Slobodyanyk <nedved198725@gmail.com>"
 USER root
 
 # Update and upgrade all packages
 RUN \
 rm docker-java-home && \
+apt-get autoremove -y python && \
 apt-get update -y && \
 apt-get -y upgrade 
+
+# Update python
+RUN \
+#apt-get autoremove -y python && \
+apt-get install -y python3
 
 # Install main packages, fonts, dependencies
 RUN apt-get install -y maven \
@@ -83,10 +90,11 @@ ENV JENKINS_SLAVE_AGENT_PORT=50000
 
 # Install Allure commandline
 RUN \
-wget http://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.13.1/allure-commandline-2.13.1.zip && \
+wget https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.13.1/allure-commandline-2.13.1.zip && \
 unzip allure-commandline-2.13.1.zip && \
 mv allure-2.13.1 /usr/bin/allure-2.13.1 && \
-rm allure-commandline-2.13.1.zip
+rm allure-commandline-2.13.1.zip && \
+apt-get clean
 
 ENV ALLURE_COMMAND_LINE=/usr/bin/allure-2.13.1
 
