@@ -105,5 +105,5 @@ VOLUME ["/var/jenkins_home"]
 # Define working directory
 WORKDIR /var/jenkins_home
 
-EXPOSE 8080 50000 
-USER jenkins
+EXPOSE 34579 50000 
+USER staging_user
