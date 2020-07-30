@@ -19,7 +19,8 @@ apt-get install -y python3
 RUN apt-get install -y openjdk-8-jdk \
 maven \
 git \
-xvfb \ 
+xvfb \
+apt-utils \
 libappindicator1 \ 
 libappindicator3-1 \ 
 libindicator7 \
