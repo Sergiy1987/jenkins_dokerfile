@@ -20,7 +20,6 @@ RUN apt-get install -y openjdk-8-jdk \
 maven \
 git \
 xvfb \
-apt-utils \
 libappindicator1 \ 
 libappindicator3-1 \ 
 libindicator7 \
