@@ -16,7 +16,8 @@ RUN \
 apt-get install -y python3
 
 # Install main packages, fonts, dependencies
-RUN apt-get install -y maven \
+RUN apt-get install -y openjdk-8-jdk \
+maven \
 git \
 xvfb \ 
 libappindicator1 \ 
@@ -39,23 +40,12 @@ xfonts-scalable
  
 ENV DISPLAY=:99
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-ENV JAVA_VERSION=8u232
-ENV JAVA_DEBIAN_VERSION=8u232-b09-1~deb9u1-b09
+ENV JAVA_VERSION=8u252
+ENV JAVA_DEBIAN_VERSION=8u252-b09-1~18.04-b09
 ENV CA_CERTIFICATES_JAVA_VERSION=20190931+nmu1
 ENV GIT_HOME=/usr/bin/git
 ENV MAVEN_HOME=/usr/share/maven
 ENV XVFB=/usr/bin
-
-# Install Firefox
-RUN \
-wget https://ftp.mozilla.org/pub/firefox/releases/72.0b9/linux-x86_64/en-US/firefox-72.0b9.tar.bz2 && \
-tar xvf firefox-72.0b9.tar.bz2 && \
-mv firefox/ /usr/lib/firefox && \
-ln -s /usr/lib/firefox /usr/bin/firefox && \
-rm firefox-72.0b9.tar.bz2
-
-ENV FIREFOX=/usr/bin/firefox
-ENV PATH=$PATH:$FIREFOX
 
 # Install Google Chrome
 RUN \
@@ -67,17 +57,6 @@ apt --fix-broken install && \
 rm google-chrome-stable_current_amd64.deb 
 
 ENV GOOGLE-CHROME=/usr/bin/google-chrome
-
-# Install Chrome Driver
-RUN \
-wget https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip && \
-unzip chromedriver_linux64.zip && \
-mv chromedriver /usr/bin/chromedriver && \
-chown root:root /usr/bin/chromedriver && \
-chmod +x /usr/bin/chromedriver && \
-rm chromedriver_linux64.zip
-
-ENV CHROME_DRIVER=/usr/bin/chromedriver
 
 # Update jenkins
 RUN \
@@ -97,7 +76,6 @@ rm allure-commandline-2.13.1.zip && \
 apt-get clean
 
 ENV ALLURE_COMMAND_LINE=/usr/bin/allure-2.13.1
-
 
 # Define volume directory
 VOLUME ["/var/jenkins_home"] 
