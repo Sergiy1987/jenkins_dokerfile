@@ -95,6 +95,8 @@ RUN id ${USER}
 
 WORKDIR /home/${USER}
 RUN id ${USER}
+RUN chown -R 777 /home/${USER}
+
 # Define volume directory
 VOLUME ["/var/jenkins_home"]
 
