@@ -83,19 +83,20 @@ apt-get clean
 
 ENV ALLURE_COMMAND_LINE=/usr/bin/allure-2.13.1
 
-# Define volume directory
-VOLUME ["/var/jenkins_home"] 
-
-# Define working directory
-WORKDIR /var/jenkins_home
-
 # Using unencrypted password/ specifying password
 RUN useradd -m ${USER} --uid=${UID} && echo "${USER}:${PW}" | chpasswd
 
 # Setup default user, when enter docker container
 USER ${UID}:${GID}
+RUN usermod -aG docker ${USER}
 RUN id ${USER}
 WORKDIR /home/${USER}
+
+# Define volume directory
+VOLUME ["/var/jenkins_home"]
+
+# Define working directory
+WORKDIR /var/jenkins_home
 
 EXPOSE 34579 50000 
 USER staging_user
