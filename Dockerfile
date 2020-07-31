@@ -84,7 +84,7 @@ apt-get clean
 ENV ALLURE_COMMAND_LINE=/usr/bin/allure-2.13.1
 
 # Using unencrypted password/ specifying password
-RUN useradd -m ${USER} --uid=${UID} && echo "${USER}:${PW}" | chpasswd
+#RUN useradd -m ${USER} --uid=${UID} && echo "${USER}:${PW}" | chpasswd
 
 # Setup default user, when enter docker container
 
