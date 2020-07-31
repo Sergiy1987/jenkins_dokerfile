@@ -9,13 +9,6 @@ ARG UID=999
 ARG GID=998
 ARG PW=HPjVyXJTBeDwJ284awi
 
-# Using unencrypted password/ specifying password
-RUN useradd -m ${USER} --uid=${UID} && echo "${USER}:${PW}" | chpasswd
-
-# Setup default user, when enter docker container
-USER ${UID}:${GID}
-WORKDIR /home/${USER}
-
 # Update and upgrade all packages
 RUN \
 rm docker-java-home && \
@@ -95,6 +88,14 @@ VOLUME ["/var/jenkins_home"]
 
 # Define working directory
 WORKDIR /var/jenkins_home
+
+# Using unencrypted password/ specifying password
+RUN useradd -m ${USER} --uid=${UID} && echo "${USER}:${PW}" | chpasswd
+
+# Setup default user, when enter docker container
+USER ${UID}:${GID}
+RUN id ${USER}
+WORKDIR /home/${USER}
 
 EXPOSE 34579 50000 
 USER staging_user
