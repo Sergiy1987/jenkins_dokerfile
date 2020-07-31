@@ -7,7 +7,6 @@ USER root
 ARG USER=staging_user
 ARG UID=999
 ARG GID=998
-ARG PW=HPjVyXJTBeDwJ284awi
 
 # Update and upgrade all packages
 RUN \
