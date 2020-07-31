@@ -98,13 +98,13 @@ WORKDIR /home/${USER}
 RUN chown -R ${UID}:${UID} /home/${USER}
 
 
-CMD echo 35.190.129.178 broono.com >> /etc/hosts; supervisord -n;
-CMD echo 35.185.127.3   css-staging.route4me.com >> /etc/hosts; supervisord -n;
-CMD echo 35.185.127.3   js-staging.route4me.com >> /etc/hosts; supervisord -n;
-CMD echo 35.201.118.193 static-staging.route4me.com >> /etc/hosts; supervisord -n;
-CMD echo 35.190.129.178 staging-apps.route4me.com >> /etc/hosts; supervisord -n;
-CMD echo 35.194.67.34   wh-staging.route4me.com >> /etc/hosts; supervisord -n;
-CMD echo 35.190.129.178 test.broonosupport.com >> /etc/hosts; supervisord -n;
+CMD echo 35.190.129.178 broono.com >> /etc/hosts;
+CMD echo 35.185.127.3   css-staging.route4me.com >> /etc/hosts;
+CMD echo 35.185.127.3   js-staging.route4me.com >> /etc/hosts;
+CMD echo 35.201.118.193 static-staging.route4me.com >> /etc/hosts;
+CMD echo 35.190.129.178 staging-apps.route4me.com >> /etc/hosts;
+CMD echo 35.194.67.34   wh-staging.route4me.com >> /etc/hosts;
+CMD echo 35.190.129.178 test.broonosupport.com >> /etc/hosts;
 
 # Define volume directory
 VOLUME ["/var/jenkins_home"]
