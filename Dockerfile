@@ -92,7 +92,7 @@ RUN groupadd --system ${GID}
 
 RUN useradd -s /sbin/nologin --system -u ${UID} ${USER}
 RUN id ${USER}
-#${USER}
+ #${USER}
 USER ${UID}:${GID}
 
 #RUN usermod -aG docker ${USER}
