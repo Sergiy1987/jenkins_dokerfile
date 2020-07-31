@@ -97,6 +97,15 @@ WORKDIR /home/${USER}
 
 RUN chown -R ${UID}:${UID} /home/${USER}
 
+
+RUN echo "35.190.129.178 broono.com" | sudo tee -a /etc/hosts
+RUN echo "35.185.127.3  css-staging.route4me.com" | sudo tee -a /etc/hosts
+RUN echo "35.185.127.3  js-staging.route4me.com" | sudo tee -a /etc/hosts
+RUN echo "35.201.118.193  static-staging.route4me.com" | sudo tee -a /etc/hosts
+RUN echo "35.190.129.178 staging-apps.route4me.com" | sudo tee -a /etc/hosts
+RUN echo "35.194.67.34 wh-staging.route4me.com" | sudo tee -a /etc/hosts
+RUN echo "35.190.129.178 test.broonosupport.com" | sudo tee -a /etc/hosts
+
 # Define volume directory
 VOLUME ["/var/jenkins_home"]
 
