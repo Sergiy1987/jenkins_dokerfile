@@ -90,7 +90,7 @@ ENV ALLURE_COMMAND_LINE=/usr/bin/allure-2.13.1
 
 RUN groupadd --system ${GID}
 
-RUN useradd -s /sbin/nologin --system -g ${GID} ${USER}
+RUN useradd -s /sbin/nologin --system -u ${UID} ${USER}
 RUN id ${USER}
 #${USER}
 USER ${UID}:${GID}
