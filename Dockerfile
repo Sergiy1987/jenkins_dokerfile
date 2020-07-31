@@ -91,7 +91,8 @@ ENV ALLURE_COMMAND_LINE=/usr/bin/allure-2.13.1
 RUN groupadd --system ${GID}
 
 RUN useradd -s /sbin/nologin --system -g ${UID} ${GID}
-RUN id ${USER}
+RUN id ${UID} 
+#${USER}
 USER ${UID}:${GID}
 
 #RUN usermod -aG docker ${USER}
