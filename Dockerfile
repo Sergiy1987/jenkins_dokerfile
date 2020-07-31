@@ -103,4 +103,4 @@ VOLUME ["/var/jenkins_home"]
 WORKDIR /var/jenkins_home
 
 EXPOSE 34579 50000 
-USER staging_user
+USER ${USER}
