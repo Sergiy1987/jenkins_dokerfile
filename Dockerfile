@@ -98,7 +98,7 @@ USER ${UID}:${GID}
 #RUN usermod -aG docker ${USER}
 RUN id ${USER}
 WORKDIR /home/${USER}
-
+RUN id ${USER}
 # Define volume directory
 VOLUME ["/var/jenkins_home"]
 
