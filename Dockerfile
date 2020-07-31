@@ -3,6 +3,19 @@ FROM jenkins:latest
 LABEL maintainer="Sergiy Slobodyanyk <nedved198725@gmail.com>"
 USER root
 
+# Add user to group
+ARG USER=staging_user
+ARG UID=999
+ARG GID=998
+ARG PW=HPjVyXJTBeDwJ284awi
+
+# Using unencrypted password/ specifying password
+RUN useradd -m ${USER} --uid=${UID} && echo "${USER}:${PW}" | chpasswd
+
+# Setup default user, when enter docker container
+USER ${UID}:${GID}
+WORKDIR /home/${USER}
+
 # Update and upgrade all packages
 RUN \
 rm docker-java-home && \
