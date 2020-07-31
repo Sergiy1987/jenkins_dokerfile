@@ -93,9 +93,10 @@ RUN useradd -s /sbin/nologin --system -u ${UID} ${USER}
 
 RUN id ${USER}
 
-#WORKDIR /home/${USER}
+WORKDIR /home/${USER}
 RUN id ${USER}
-#RUN chown -R 777 /home/${USER}
+RUN chown -R 777 /home/${USER}
+VOLUME ["/home/${USER}"]
 
 # Define volume directory
 VOLUME ["/var/jenkins_home"]
