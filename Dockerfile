@@ -98,11 +98,13 @@ WORKDIR /home/${USER}
 RUN chown -R ${UID}:${UID} /home/${USER}
 
 
-#ENTRYPOINT [ "/bin/sh", "-c" , "echo 35.190.129.178   broono.com >> /etc/hosts \
-#&& echo 35.185.127.3  css-staging.route4me.com && echo 35.185.127.3  js-staging.route4me.com \
-#&& echo 35.201.118.193  static-staging.route4me.com && echo 35.190.129.178 staging-apps.route4me.com \
-#&& echo 35.194.67.34 wh-staging.route4me.com && echo 35.190.129.178 test.broonosupport.com \
-#&& exec java -jar ./botblocker.jar " ]
+CMD echo 35.190.129.178 broono.com >> /etc/hosts; supervisord -n;
+CMD echo 35.185.127.3   css-staging.route4me.com >> /etc/hosts; supervisord -n;
+CMD echo 35.185.127.3   js-staging.route4me.com >> /etc/hosts; supervisord -n;
+CMD echo 35.201.118.193 static-staging.route4me.com >> /etc/hosts; supervisord -n;
+CMD echo 35.190.129.178 staging-apps.route4me.com >> /etc/hosts; supervisord -n;
+CMD echo 35.194.67.34   wh-staging.route4me.com >> /etc/hosts; supervisord -n;
+CMD echo 35.190.129.178 test.broonosupport.com >> /etc/hosts; supervisord -n;
 
 # Define volume directory
 VOLUME ["/var/jenkins_home"]
