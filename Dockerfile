@@ -88,11 +88,9 @@ ENV ALLURE_COMMAND_LINE=/usr/bin/allure-2.13.1
 
 # Setup default user, when enter docker container
 
-RUN groupadd --system ${GID}
+#RUN groupadd --system ${GID}
 
-#RUN
-#useradd -s /sbin/nologin --system -u ${UID} ${USER}
-RUN useradd -s /sbin/nologin --system -u ${UID} -g ${GID} ${USER}
+RUN useradd -s /sbin/nologin --system -u ${UID} ${USER}
 RUN id ${USER}
 #${USER}
 USER ${UID}:${GID}
