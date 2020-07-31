@@ -87,8 +87,13 @@ ENV ALLURE_COMMAND_LINE=/usr/bin/allure-2.13.1
 RUN useradd -m ${USER} --uid=${UID} && echo "${USER}:${PW}" | chpasswd
 
 # Setup default user, when enter docker container
+
+RUN groupadd --system ${GID}
+RUN useradd -s /sbin/nologin --system -g ${USER} ${USER}
+RUN id ${USER}
 USER ${UID}:${GID}
-RUN usermod -aG docker ${USER}
+
+#RUN usermod -aG docker ${USER}
 RUN id ${USER}
 WORKDIR /home/${USER}
 
