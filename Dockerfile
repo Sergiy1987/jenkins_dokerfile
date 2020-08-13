@@ -99,9 +99,10 @@ RUN chown -R ${UID}:${UID} /home/${USER}
 
 # Define volume directory
 VOLUME ["/var/jenkins_home"]
+VOLUME ["/home/${USER}/Downloads/"]
 
 # Define working directory
 WORKDIR /var/jenkins_home
 
-EXPOSE 34579 50000 
+EXPOSE 34579 50000 465
 USER ${USER}
