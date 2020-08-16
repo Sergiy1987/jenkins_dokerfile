@@ -74,13 +74,13 @@ ENV JENKINS_SLAVE_AGENT_PORT=50000
 
 # Install Allure commandline
 RUN \
-wget https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.13.1/allure-commandline-2.13.1.zip && \
-unzip allure-commandline-2.13.1.zip && \
-mv allure-2.13.1 /usr/bin/allure-2.13.1 && \
-rm allure-commandline-2.13.1.zip && \
+wget https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.13.5/allure-commandline-2.13.5.zip && \
+unzip allure-commandline-2.13.5.zip && \
+mv allure-2.13.5 /usr/bin/allure-2.13.5 && \
+rm allure-commandline-2.13.5.zip && \
 apt-get clean
 
-ENV ALLURE_COMMAND_LINE=/usr/bin/allure-2.13.1
+ENV ALLURE_COMMAND_LINE=/usr/bin/allure-2.13.5
 
 # Using unencrypted password/ specifying password
 #RUN useradd -m ${USER} --uid=${UID} && echo "${USER}:${PW}" | chpasswd
