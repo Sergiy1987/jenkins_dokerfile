@@ -108,7 +108,6 @@ RUN chown -R ${UID}:${UID} /home/${USER}
 # Define volume directory
 VOLUME ["/var/jenkins_home"]
 VOLUME ["/home/${USER}/Downloads/"]
-VOLUME ["/var/run/docker.sock"]
 
 # Define working directory
 WORKDIR /var/jenkins_home
