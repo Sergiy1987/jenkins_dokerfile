@@ -93,11 +93,6 @@ RUN apt-get update -qq && apt-get install -qqy \
 # Install Docker from Docker Inc. repositories.
 RUN curl -sSL https://get.docker.com/ | sh
 
-# Install the magic wrapper.
-ADD ./wrapdocker /usr/local/bin/wrapdocker
-RUN chmod +x /usr/local/bin/wrapdocker
-CMD ["wrapdocker"]
-
 # Using unencrypted password/ specifying password
 #RUN useradd -m ${USER} --uid=${UID} && echo "${USER}:${PW}" | chpasswd
 
