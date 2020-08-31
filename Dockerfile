@@ -82,13 +82,21 @@ apt-get clean
 
 ENV ALLURE_COMMAND_LINE=/usr/bin/allure-2.13.5
 
-#Install docker
-RUN apt-get -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
-RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+# Let's start with some basic stuff.
+RUN apt-get update -qq && apt-get install -qqy \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    lxc \
+    iptables
 
-RUN apt-get update
-RUN apt-get -y install docker-ce
+# Install Docker from Docker Inc. repositories.
+RUN curl -sSL https://get.docker.com/ | sh
+
+# Install the magic wrapper.
+ADD ./wrapdocker /usr/local/bin/wrapdocker
+RUN chmod +x /usr/local/bin/wrapdocker
+CMD ["wrapdocker"]
 
 # Using unencrypted password/ specifying password
 #RUN useradd -m ${USER} --uid=${UID} && echo "${USER}:${PW}" | chpasswd
@@ -108,6 +116,7 @@ RUN chown -R ${UID}:${UID} /home/${USER}
 # Define volume directory
 VOLUME ["/var/jenkins_home"]
 VOLUME ["/home/${USER}/Downloads/"]
+VOLUME ["/var/lib/docker"]
 
 # Define working directory
 WORKDIR /var/jenkins_home
