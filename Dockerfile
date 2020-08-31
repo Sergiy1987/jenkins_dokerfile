@@ -92,6 +92,7 @@ RUN apt-get update -qq && apt-get install -qqy \
 
 # Install Docker from Docker Inc. repositories.
 RUN curl -sSL https://get.docker.com/ | sh
+RUN usermod -aG docker ${USER}
 
 # Using unencrypted password/ specifying password
 #RUN useradd -m ${USER} --uid=${UID} && echo "${USER}:${PW}" | chpasswd
