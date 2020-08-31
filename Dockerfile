@@ -83,15 +83,15 @@ apt-get clean
 ENV ALLURE_COMMAND_LINE=/usr/bin/allure-2.13.5
 
 # Let's start with some basic stuff.
-RUN apt-get update -qq && apt-get install -qqy \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    lxc \
-    iptables
+#RUN apt-get update -qq && apt-get install -qqy \
+#    apt-transport-https \
+#    ca-certificates \
+#    curl \
+#    lxc \
+#    iptables
 
 # Install Docker from Docker Inc. repositories.
-RUN curl -sSL https://get.docker.com/ | sh
+#RUN curl -sSL https://get.docker.com/ | sh
 
 # Using unencrypted password/ specifying password
 #RUN useradd -m ${USER} --uid=${UID} && echo "${USER}:${PW}" | chpasswd
@@ -108,7 +108,7 @@ WORKDIR /home/${USER}
 
 RUN chown -R ${UID}:${UID} /home/${USER}
 
-RUN usermod -aG docker root
+#RUN usermod -aG docker root
 
 # Define volume directory
 VOLUME ["/var/jenkins_home"]
