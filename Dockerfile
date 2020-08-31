@@ -108,7 +108,7 @@ WORKDIR /home/${USER}
 
 RUN chown -R ${UID}:${UID} /home/${USER}
 
-RUN usermod -aG docker ${USER}
+RUN usermod -aG docker root
 
 # Define volume directory
 VOLUME ["/var/jenkins_home"]
