@@ -52,6 +52,8 @@ ENV GIT_HOME=/usr/bin/git
 ENV MAVEN_HOME=/usr/share/maven
 ENV XVFB=/usr/bin
 
+RUN /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1600x1200x24
+
 # Install Google Chrome
 RUN \
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
