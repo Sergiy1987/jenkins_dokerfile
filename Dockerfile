@@ -4,9 +4,9 @@ LABEL maintainer="Sergiy Slobodyanyk <nedved198725@gmail.com>"
 USER root
 
 # Add user to group
-ARG USER=staging_user
-ARG UID=999
-ARG GID=998
+ARG USER=sergiys
+ARG UID=1001
+ARG GID=1002
 
 # Update and upgrade all packages
 RUN \
